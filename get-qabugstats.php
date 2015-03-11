@@ -132,6 +132,7 @@ $dailycountqueries = array('fixed', 'verified', 'reopened');
 
 $dailycompqueries = array('filed', 'fixed');
 
+// See https://wiki.mozilla.org/Firefox/IterativeDevelopment#Upcoming_Iterations
 $iterations =
     array('33.2' => array('start' => '2014-06-24',
                           'end' => '2014-07-08'),
@@ -172,7 +173,25 @@ $iterations =
           '39.2' => array('start' => '2015-03-10',
                           'end' => '2015-03-24'),
           '39.3' => array('start' => '2015-03-24',
-                          'end' => '2015-04-07'),
+                          'end' => '2015-03-31'),
+          '40.1' => array('start' => '2015-04-31',
+                          'end' => '2015-04-14'),
+          '40.2' => array('start' => '2015-04-14',
+                          'end' => '2015-04-28'),
+          '40.3' => array('start' => '2015-04-28',
+                          'end' => '2015-05-12'),
+          '41.1' => array('start' => '2015-05-12',
+                          'end' => '2015-05-26'),
+          '41.2' => array('start' => '2015-05-26',
+                          'end' => '2015-06-09'),
+          '41.3' => array('start' => '2015-06-09',
+                          'end' => '2015-06-30'),
+          '42.1' => array('start' => '2015-06-30',
+                          'end' => '2015-07-14'),
+          '42.2' => array('start' => '2015-07-14',
+                          'end' => '2015-07-28'),
+          '42.3' => array('start' => '2015-07-28',
+                          'end' => '2015-08-11'),
     );
 $iterqueries = array('total', 'verifiable', 'verifydone',
                      'verifyneeded', 'contactneeded', 'verifytriage');
@@ -232,8 +251,23 @@ $trains =
           '39' => array('start'   => '2015-02-23',
                         'aurora'  => '2015-03-30',
                         'beta'    => '2015-05-11',
-                        'release' => '2015-06-29',
+                        'release' => '2015-06-30',
                         'end'     => '2015-08-11'),
+          '40' => array('start'   => '2015-03-30',
+                        'aurora'  => '2015-05-11',
+                        'beta'    => '2015-06-29',
+                        'release' => '2015-08-11',
+                        'end'     => '2015-09-22'),
+          '41' => array('start'   => '2015-05-11',
+                        'aurora'  => '2015-06-29',
+                        'beta'    => '2015-08-10',
+                        'release' => '2015-09-22',
+                        'end'     => '2015-11-03'),
+          '42' => array('start'   => '2015-06-29',
+                        'aurora'  => '2015-08-10',
+                        'beta'    => '2015-09-21',
+                        'release' => '2015-11-03',
+                        'end'     => '2015-12-15'),
     );
 $trainqueries = array('notverifymarked', 'verifydone', 'verifyneeded', 'verifytriage');
 
