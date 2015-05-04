@@ -75,8 +75,10 @@ $reports = array(
     'GMP' => array('display_name' => 'GMP',
                    'include_raw_table' => true,
                    'wherex' => " AND reports_clean.process_type='plugin' AND raw_crashes.raw_crash->>'GMPPlugin'='1'",
-                   'products' => array('Firefox')));
+                   'products' => array('Firefox')),
 */
+);
+
 // for how many days back to get the data
 $backlog_days = 7;
 
