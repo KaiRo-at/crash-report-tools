@@ -49,10 +49,40 @@ if (count($force_dates)) {
 // reports to process
 
 $reports = array(
-  'startup' => array('filter' => "EXTRACT(EPOCH FROM reports_clean.uptime) <= '60'",
-                     'process_split' => true,
-                     'channels' => array('release', 'beta', 'aurora', 'nightly'),
-                     'products' => array('Firefox', 'FennecAndroid')),
+  'startup' => array(
+    'filter' => "EXTRACT(EPOCH FROM reports_clean.uptime) <= '60'",
+    'process_split' => true,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox', 'FennecAndroid')
+  ),
+  'oom' => array(
+    'filter' => "signatures.signature LIKE 'OOM |%'",
+    'include_signature_table' => true,
+    'process_split' => true,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox', 'FennecAndroid')
+  ),
+  'oom:small' => array(
+    'filter' => "signatures.signature = 'OOM | small'",
+    'include_signature_table' => true,
+    'process_split' => true,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox', 'FennecAndroid')
+  ),
+  'oom:large' => array(
+    'filter' => "signatures.signature LIKE 'OOM | large |%'",
+    'include_signature_table' => true,
+    'process_split' => true,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox', 'FennecAndroid')
+  ),
+  'shutdownhang' => array(
+    'filter' => "signatures.signature LIKE 'shutdownhang |%'",
+    'include_signature_table' => true,
+    'process_split' => false,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox')
+  ),
 );
 
 // for how many days back to get the data
@@ -105,9 +135,14 @@ foreach ($reports as $catname=>$rep) {
 
         $rep_query =
           'SELECT COUNT(*) as cnt'.($rep['process_split']?',reports_clean.process_type':'').' '
-          .'FROM reports_clean'
-          .' LEFT JOIN signatures'
-          .' ON (reports_clean.signature_id=signatures.signature_id)'
+          .'FROM'
+          .((array_key_exists('include_signature_table', $rep) && $rep['include_signature_table'])?
+             'reports_clean LEFT JOIN signatures'
+             .' ON (reports_clean.signature_id=signatures.signature_id)'
+            :((array_key_exists('include_reports_table', $rep) && $rep['include_reports_table'])?
+               'reports_clean LEFT JOIN reports'
+               .' ON (reports_clean.uuid=reports.uuid)'
+              :'reports_clean'))
           .' LEFT JOIN product_versions'
           .' ON (reports_clean.product_version_id=product_versions.product_version_id)'
           ." WHERE product_versions.product_name = '".$product."' "
