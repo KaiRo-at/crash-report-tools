@@ -56,7 +56,7 @@ $reports = array(
 );
 
 // for how many days back to get the data
-$backlog_days = 0;
+$backlog_days = 7;
 
 // *** URLs ***
 
