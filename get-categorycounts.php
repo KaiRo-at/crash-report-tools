@@ -135,7 +135,7 @@ foreach ($reports as $catname=>$rep) {
 
         $rep_query =
           'SELECT COUNT(*) as cnt'.($rep['process_split']?',reports_clean.process_type':'').' '
-          .'FROM'
+          .'FROM '
           .((array_key_exists('include_signature_table', $rep) && $rep['include_signature_table'])?
              'reports_clean LEFT JOIN signatures'
              .' ON (reports_clean.signature_id=signatures.signature_id)'
