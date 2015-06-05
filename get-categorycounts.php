@@ -118,8 +118,6 @@ foreach ($reports as $catname=>$rep) {
           .' AND '.$rep['filter']
           .($rep['process_split']?' GROUP BY reports_clean.process_type':'');
 
-        print($rep_query."\n");
-
         $rep_result = pg_query($db_conn, $rep_query);
         if (!$rep_result) {
           print('--- ERROR: Report query failed!'."\n");
@@ -127,6 +125,7 @@ foreach ($reports as $catname=>$rep) {
 
         while ($rep_row = pg_fetch_array($rep_result)) {
           if ($rep['process_split']) {
+            print($rep_row['process_type'].': '.$rep_row['cnt']."\n");
             $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
           }
           else {
