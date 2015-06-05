@@ -4,7 +4,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// This script retrieves stats comparing flash versions in hangs and crashes.
+// This script retrieves top crash stats for some special criteria on all
+// "featured" versions.
 
 // *** non-commandline handling ***
 
