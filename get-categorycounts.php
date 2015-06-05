@@ -51,10 +51,8 @@ if (count($force_dates)) {
 $reports = array(
   'startup' => array('filter' => "EXTRACT(EPOCH FROM reports_clean.uptime) <= '60'",
                      'process_split' => true,
-                     'channels' => array('release', 'beta'),
-                     'products' => array('Firefox')),
-//                     'channels' => array('release', 'beta', 'aurora', 'nightly'),
-//                     'products' => array('Firefox', 'FennecAndroid')),
+                     'channels' => array('release', 'beta', 'aurora', 'nightly'),
+                     'products' => array('Firefox', 'FennecAndroid')),
 );
 
 // for how many days back to get the data
@@ -130,7 +128,6 @@ foreach ($reports as $catname=>$rep) {
             if (!is_array($prodcatdata[$anaday][$catname])) {
               $prodcatdata[$anaday][$catname] = array();
             }
-            print($rep_row['process_type'].': '.$rep_row['cnt']."\n");
             $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
           }
           else {
@@ -138,7 +135,7 @@ foreach ($reports as $catname=>$rep) {
           }
         }
       }
-      print_r($prodcatdata);
+
       file_put_contents($fprodcatdata, json_encode($prodcatdata));
       print("\n");
     }
