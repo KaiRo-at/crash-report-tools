@@ -160,7 +160,9 @@ foreach ($reports as $catname=>$rep) {
 
         while ($rep_row = pg_fetch_array($rep_result)) {
           if ($rep['process_split']) {
-            if (!is_array($prodcatdata[$anaday][$catname])) {
+            if (array_key_exists($anaday, $prodcatdata) &&
+                array_key_exists($catname, $prodcatdata[$anaday]) &&
+                !is_array($prodcatdata[$anaday][$catname])) {
               $prodcatdata[$anaday][$catname] = array();
             }
             $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
