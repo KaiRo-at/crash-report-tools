@@ -93,7 +93,7 @@ foreach ($reports as $catname=>$rep) {
       $max_build_age = getMaxBuildAge($channel, true);
 
       if (file_exists($fprodcatdata)) {
-        print('Read stored '.$product.' '.$catname.' data'."\n");
+        print('Read stored '.$catname.' data for '.$product.' '.$channel."\n");
         $prodcatdata = json_decode(file_get_contents($fprodcatdata), true);
       }
       else {
@@ -101,10 +101,10 @@ foreach ($reports as $catname=>$rep) {
       }
 
       foreach ($days_to_analyze as $anaday) {
-        print('Category Counts: Looking at '.$catname.' data for '.$product.' on '.$anaday."\n");
+        print('Category Counts: Looking at '.$catname.' data for '.$product.' '.$channel.' on '.$anaday."\n");
 
         $rep_query =
-          'SELECT COUNT(*) as cnt '
+          'SELECT COUNT(*) as cnt'.($rep['process_split']?',reports_clean.process_type':'').' '
           .'FROM reports_clean'
           .' LEFT JOIN signatures'
           .' ON (reports_clean.signature_id=signatures.signature_id)'
@@ -115,7 +115,8 @@ foreach ($reports as $catname=>$rep) {
           ." AND product_versions.is_rapid_beta='f'"
           ." AND reports_clean.date_processed < (product_versions.build_date + interval '".$max_build_age."')"
           ." AND utc_day_is(reports_clean.date_processed, '".$anaday."')"
-          .' AND '.$rep['filter'];
+          .' AND '.$rep['filter']
+          .($rep['process_split']?' GROUP BY reports_clean.process_type':'');
 
         $rep_result = pg_query($db_conn, $rep_query);
         if (!$rep_result) {
@@ -123,7 +124,12 @@ foreach ($reports as $catname=>$rep) {
         }
 
         while ($rep_row = pg_fetch_array($rep_result)) {
-          $prodcatdata[$anaday][$catname] = $rep_row['cnt'];
+          if ($rep['process_split']) {
+            $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
+          }
+          else {
+            $prodcatdata[$anaday][$catname] = $rep_row['cnt'];
+          }
         }
       }
 
