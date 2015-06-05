@@ -131,44 +131,48 @@ foreach ($reports as $catname=>$rep) {
       }
 
       foreach ($days_to_analyze as $anaday) {
-        print('Category Counts: Looking at '.$catname.' data for '.$product.' '.$channel.' on '.$anaday."\n");
+        if (!array_key_exists($anaday, $prodcatdata) ||
+            !array_key_exists($catname, $prodcatdata[$anaday]) ||
+            in_array($anaday, $force_dates)) {
+          print('Category Counts: Looking at '.$catname.' data for '.$product.' '.$channel.' on '.$anaday."\n");
 
-        $rep_query =
-          'SELECT COUNT(*) as cnt'.($rep['process_split']?',reports_clean.process_type':'').' '
-          .'FROM '
-          .((array_key_exists('include_signature_table', $rep) && $rep['include_signature_table'])?
-             'reports_clean LEFT JOIN signatures'
-             .' ON (reports_clean.signature_id=signatures.signature_id)'
-            :((array_key_exists('include_reports_table', $rep) && $rep['include_reports_table'])?
-               'reports_clean LEFT JOIN reports'
-               .' ON (reports_clean.uuid=reports.uuid)'
-              :'reports_clean'))
-          .' LEFT JOIN product_versions'
-          .' ON (reports_clean.product_version_id=product_versions.product_version_id)'
-          ." WHERE product_versions.product_name = '".$product."' "
-          ." AND product_versions.build_type='".$channel."'"
-          ." AND product_versions.is_rapid_beta='f'"
-          ." AND reports_clean.date_processed < (product_versions.build_date + interval '".$max_build_age."')"
-          ." AND utc_day_is(reports_clean.date_processed, '".$anaday."')"
-          .' AND '.$rep['filter']
-          .($rep['process_split']?' GROUP BY reports_clean.process_type':'');
+          $rep_query =
+            'SELECT COUNT(*) as cnt'.($rep['process_split']?',reports_clean.process_type':'').' '
+            .'FROM '
+            .((array_key_exists('include_signature_table', $rep) && $rep['include_signature_table'])?
+               'reports_clean LEFT JOIN signatures'
+               .' ON (reports_clean.signature_id=signatures.signature_id)'
+              :((array_key_exists('include_reports_table', $rep) && $rep['include_reports_table'])?
+                 'reports_clean LEFT JOIN reports'
+                 .' ON (reports_clean.uuid=reports.uuid)'
+                :'reports_clean'))
+            .' LEFT JOIN product_versions'
+            .' ON (reports_clean.product_version_id=product_versions.product_version_id)'
+            ." WHERE product_versions.product_name = '".$product."' "
+            ." AND product_versions.build_type='".$channel."'"
+            ." AND product_versions.is_rapid_beta='f'"
+            ." AND reports_clean.date_processed < (product_versions.build_date + interval '".$max_build_age."')"
+            ." AND utc_day_is(reports_clean.date_processed, '".$anaday."')"
+            .' AND '.$rep['filter']
+            .($rep['process_split']?' GROUP BY reports_clean.process_type':'');
 
-        $rep_result = pg_query($db_conn, $rep_query);
-        if (!$rep_result) {
-          print('--- ERROR: Report query failed!'."\n");
-        }
-
-        while ($rep_row = pg_fetch_array($rep_result)) {
-          if ($rep['process_split']) {
-            if (array_key_exists($anaday, $prodcatdata) &&
-                array_key_exists($catname, $prodcatdata[$anaday]) &&
-                !is_array($prodcatdata[$anaday][$catname])) {
-              $prodcatdata[$anaday][$catname] = array();
-            }
-            $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
+          $rep_result = pg_query($db_conn, $rep_query);
+          if (!$rep_result) {
+            print('--- ERROR: Report query failed!'."\n");
           }
-          else {
-            $prodcatdata[$anaday][$catname] = $rep_row['cnt'];
+
+          while ($rep_row = pg_fetch_array($rep_result)) {
+            if ($rep['process_split']) {
+              if (array_key_exists($anaday, $prodcatdata) &&
+                  array_key_exists($catname, $prodcatdata[$anaday]) &&
+                  !is_array($prodcatdata[$anaday][$catname])) {
+                $prodcatdata[$anaday][$catname] = array();
+              }
+              $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
+            }
+            else {
+              $prodcatdata[$anaday][$catname] = $rep_row['cnt'];
+            }
           }
         }
       }
