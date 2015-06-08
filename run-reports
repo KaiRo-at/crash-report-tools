@@ -15,6 +15,7 @@ cd `dirname $_`
 ./get-topcrashes.php
 ./get-b2gcrashes.php
 ./get-socorrodata.php
+./get-categorycounts.php $@
 ./get-socorrobugsweekly.php
 ./get-crashbugsweekly.php
 ./get-qabugstats.php
