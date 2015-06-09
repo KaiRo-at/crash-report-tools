@@ -86,46 +86,22 @@ $backlog_days = 7;
 
 // *** URLs ***
 
-$on_moz_server = file_exists('/mnt/crashanalysis/rkaiser/');
-
 // File storing the DB access data - including password!
 $fdbsecret = '/home/rkaiser/.socorro-prod-dbsecret.json';
-
-if ($on_moz_server) { chdir('/mnt/crashanalysis/rkaiser/'); }
-else { chdir('/mnt/mozilla/projects/socorro/'); }
 
 // *** code start ***
 
 // get current day
 $curtime = time();
 
-if (file_exists($fdbsecret)) {
-  $dbsecret = json_decode(file_get_contents($fdbsecret), true);
-  if (!is_array($dbsecret) || !count($dbsecret)) {
-    print('ERROR: No DB secrets found, aborting!'."\n");
-    exit(1);
-  }
-  $db_conn = pg_pconnect('host='.$dbsecret['host']
-                         .' port='.$dbsecret['port']
-                         .' dbname=breakpad'
-                         .' user='.$dbsecret['user']
-                         .' password='.$dbsecret['password']);
-  if (!$db_conn) {
-    print('ERROR: DB connection failed, aborting!'."\n");
-    exit(1);
-  }
-  // For info on what data can be accessed, see also
-  // http://socorro.readthedocs.org/en/latest/databasetabledesc.html
-  // For the DB schema, see
-  // https://github.com/mozilla/socorro/blob/master/sql/schema.sql
-}
-else {
-  // Won't work! (Set just for documenting what fields are in the file.)
-  $dbsecret = array('host' => 'host.m.c', 'port' => '6432',
-                    'user' => 'analyst', 'password' => 'foo');
-  print('ERROR: No DB secrets found, aborting!'."\n");
+$datapath = getDataPath();
+if (is_null($datapath)) {
+  print('ERROR: No data path found, aborting!'."\n");
   exit(1);
 }
+chdir($datapath);
+
+$db_conn = getDBConnection($fdbsecret);
 
 foreach ($reports as $rep) {
   $channel = array_key_exists('channel', $rep)?$rep['channel']:'';

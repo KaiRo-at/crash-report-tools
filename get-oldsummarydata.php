@@ -39,14 +39,18 @@ $channels = array('Release','Beta');
 
 // *** URLs and paths ***
 
-$on_moz_server = file_exists('/mnt/crashanalysis/rkaiser/');
-$url_csvbase = $on_moz_server?'/mnt/crashanalysis/crash_analysis/'
-                             :'http://people.mozilla.com/crash_analysis/';
-
-if ($on_moz_server) { chdir('/mnt/crashanalysis/rkaiser/'); }
-else { chdir('/mnt/mozilla/projects/socorro/'); }
+$url_csvbase = file_exists('/mnt/crashanalysis/crash_analysis/')
+               ? '/mnt/crashanalysis/crash_analysis/'
+               : 'http://people.mozilla.com/crash_analysis/';
 
 // *** code start ***
+
+$datapath = getDataPath();
+if (is_null($datapath)) {
+  print('ERROR: No data path found, aborting!'."\n");
+  exit(1);
+}
+chdir($datapath);
 
 foreach ($channels as $channel) {
   $fprodtypedata = 'Firefox-'.strtolower($channel).'-old-bytype.json';
@@ -70,7 +74,7 @@ foreach ($channels as $channel) {
     $fcsv = date('Ymd', $anatime).'-pub-crashdata.csv';
 
     // Make sure we have the crashdata csv.
-    if ($on_moz_server) {
+    if ($url_csvbase{0} == "/") { // local path
       $anafcsvgz = $url_csvbase.date('Ymd', $anatime).'/'.$fcsv.'.gz';
       if (!file_exists($anafcsvgz)) {
         print($anafcsvgz.' does not exist!'."\n");
@@ -103,7 +107,7 @@ foreach ($channels as $channel) {
       $cmd = 'awk \'-F\t\' \'$7 ~ /^Firefox$/'
 //             .' && $29 ~ /^'.awk_quote($channel, '/')
             .' {printf ",%s,%s,%s,%s,%s,%s\n",$7,$8,$9,$25,($23!="\\\\N"),$29}\'';
-      if ($on_moz_server) {
+      if ($url_csvbase{0} == "/") { // local path
         $return = shell_exec('gunzip --stdout '.$anafcsvgz.' | '.$cmd.' | sort | uniq -c');
       }
       else {

@@ -39,16 +39,19 @@ $fake_counts = false; //true; // DEBUG only!
 
 // *** URLs ***
 
-$on_moz_server = file_exists('/mnt/crashanalysis/rkaiser/');
 $outdir = 'socorro-bugs';
-
-if ($on_moz_server) { chdir('/mnt/crashanalysis/rkaiser/'); }
-else { chdir('/mnt/mozilla/projects/socorro/'); }
 
 // *** code start ***
 
 // get current day
 $curtime = time();
+
+$datapath = getDataPath();
+if (is_null($datapath)) {
+  print('ERROR: No data path found, aborting!'."\n");
+  exit(1);
+}
+chdir($datapath);
 
 // make sure our output dir exists
 if (!file_exists($outdir)) { mkdir($outdir); }

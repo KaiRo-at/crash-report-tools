@@ -50,11 +50,7 @@ $backlog_days = 2;
 
 // *** URLs ***
 
-$on_moz_server = file_exists('/mnt/crashanalysis/rkaiser/');
 $outdir = 'qa';
-
-if ($on_moz_server) { chdir('/mnt/crashanalysis/rkaiser/'); }
-else { chdir('/mnt/mozilla/projects/socorro/'); }
 
 $bugzilla_url = 'https://bugzilla.mozilla.org/';
 $bzapi_url = 'https://bugzilla.mozilla.org/bzapi/';
@@ -64,6 +60,13 @@ $bz_restapi_url = 'https://bugzilla.mozilla.org/rest/';
 
 // get current day
 $curtime = time();
+
+$datapath = getDataPath();
+if (is_null($datapath)) {
+  print('ERROR: No data path found, aborting!'."\n");
+  exit(1);
+}
+chdir($datapath);
 
 // make sure our output dir exists
 if (!file_exists($outdir)) { mkdir($outdir); }
