@@ -109,6 +109,19 @@ function getMaxBuildAge($channel, $version_overall = false) {
   return '1 year'; // almost forever
 }
 
+function getDataPath() {
+  $data_path = null;
+  foreach (array('/mnt/crashanalysis/rkaiser/',
+                 '/home/rkaiser/reports/',
+                 '/mnt/mozilla/projects/socorro/')
+           as $testpath) {
+    if (file_exists($testpath) && is_dir($testpath)) {
+      $data_path = $testpath;
+    }
+  }
+  return $data_path;
+}
+
 function getDBConnection($fdbsecret) {
   if (file_exists($fdbsecret)) {
     $dbsecret = json_decode(file_get_contents($fdbsecret), true);
@@ -139,6 +152,5 @@ function getDBConnection($fdbsecret) {
   }
   return $db_conn;
 }
-
 
 ?>

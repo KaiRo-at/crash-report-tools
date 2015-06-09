@@ -140,7 +140,6 @@ $exp_vars = array(
 
 // *** URLs and paths ***
 
-$on_moz_server = file_exists('/mnt/crashanalysis/rkaiser/');
 $url_algolink = 'https://wiki.mozilla.org/CrashKill/Plan/Explosive';
 $url_siglinkbase = 'https://crash-stats.mozilla.com/report/list?signature=';
 $url_nullsiglink = 'https://crash-stats.mozilla.com/report/list?missing_sig=EMPTY_STRING';
@@ -149,14 +148,17 @@ $url_buglinkbase = 'https://bugzilla.mozilla.org/show_bug.cgi?id=';
 // File storing the DB access data - including password!
 $fdbsecret = '/home/rkaiser/.socorro-prod-dbsecret.json';
 
-if ($on_moz_server) { chdir('/mnt/crashanalysis/rkaiser/'); }
-else { chdir('/mnt/mozilla/projects/socorro/'); }
-
-
 // *** code start ***
 
 // get current day
 $curtime = time();
+
+$datapath = getDataPath();
+if (is_null($datapath)) {
+  print('ERROR: No data path found, aborting!'."\n");
+  exit(1);
+}
+chdir($datapath);
 
 if (file_exists($fdbsecret)) {
   $dbsecret = json_decode(file_get_contents($fdbsecret), true);
