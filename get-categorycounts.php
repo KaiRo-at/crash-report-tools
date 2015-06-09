@@ -90,18 +90,20 @@ $backlog_days = 7;
 
 // *** URLs ***
 
-$on_moz_server = file_exists('/mnt/crashanalysis/rkaiser/');
-
 // File storing the DB access data - including password!
 $fdbsecret = '/home/rkaiser/.socorro-prod-dbsecret.json';
-
-if ($on_moz_server) { chdir('/mnt/crashanalysis/rkaiser/'); }
-else { chdir('/mnt/mozilla/projects/socorro/'); }
 
 // *** code start ***
 
 // get current day
 $curtime = time();
+
+$datapath = getDataPath();
+if (is_null($datapath)) {
+  print('ERROR: No data path found, aborting!'."\n");
+  exit(1);
+}
+chdir($datapath);
 
 $db_conn = getDBConnection($fdbsecret);
 
