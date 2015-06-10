@@ -99,7 +99,7 @@ for ($daysback = $backlog_days + 1; $daysback > 0; $daysback--) {
       if (!$raw_result) {
         print('--- ERROR: Raw crash query failed for bp-'.$rep_row['uuid'].'!'."\n");
       }
-      $raw_row = pg_fetch_array($raw_result);
+      $raw_row = $raw_result ? pg_fetch_array($raw_result) : array('raw_crash'=>'{}');
       $raw_crash_data = json_decode($raw_row['raw_crash'], true);
       $rep_row['manufacturer'] = array_key_exists('Android_Manufacturer', $raw_crash_data)
                                  ? $raw_crash_data['Android_Manufacturer'] : '';

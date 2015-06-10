@@ -184,6 +184,7 @@ foreach ($reports as $rep) {
 
   $max_build_age = getMaxBuildAge($channel, true);
   if (!$rep['fake_adu']) {
+    print('Explosiveness: Reading ADI data for '.$prdverdisplay."\n");
     $first_day = date('Y-m-d', strtotime(date('Y-m-d', $curtime).' -'.($backlog_days + 1).' day'));
     $adu_query =
       "SELECT SUM(CASE
