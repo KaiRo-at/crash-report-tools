@@ -117,6 +117,7 @@ function getDataPath() {
            as $testpath) {
     if (file_exists($testpath) && is_dir($testpath)) {
       $data_path = $testpath;
+      break;
     }
   }
   return $data_path;
