@@ -6,9 +6,9 @@
 // This script contains utility functions used by multiple other scripts.
 
 $global_defaults = array(
-    'backlog_days' => 14, // 7
-    'explosive_backlog_days' => 25, // 20
-    'socorrodata_backlog_days' => 21, // 15
+    'backlog_days' => 7,
+    'explosive_backlog_days' => 20,
+    'socorrodata_backlog_days' => 15,
     'bugstats_backlog_days' => 2,
 );
 
