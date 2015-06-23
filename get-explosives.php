@@ -125,7 +125,7 @@ $reports = array(array('product'=>'Firefox',
                 );
 
 // for how many days back to get the data
-$backlog_days = 20;
+$backlog_days = $global_defaults['explosive_backlog_days'];
 
 // *** explosiveness tuning ***
 

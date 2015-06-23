@@ -39,7 +39,7 @@ $prodchannels = array('Firefox' => array('release', 'beta', 'aurora', 'nightly')
                       'FennecAndroid' => array('release', 'beta', 'aurora', 'nightly'));
 
 // for how many days back to get the data
-$backlog_days = 15;
+$backlog_days = $global_defaults['socorrodata_backlog_days'];
 
 // *** URLs and paths ***
 

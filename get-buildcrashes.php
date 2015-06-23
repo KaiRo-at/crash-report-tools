@@ -41,7 +41,7 @@ $prodchan = array('Firefox' => array('release', 'beta', 'aurora', 'nightly', 'es
                   'MetroFirefox' => array('beta', 'aurora', 'nightly'));
 
 // how many days back to look at
-$backlog_days = 7;
+$backlog_days = $global_defaults['backlog_days'];
 
 // *** URLs ***
 

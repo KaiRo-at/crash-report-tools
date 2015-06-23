@@ -103,7 +103,7 @@ $reports = array(array('product'=>'Firefox',
 $max_uptime = 60;
 
 // for how many days back to get the data
-$backlog_days = 7;
+$backlog_days = $global_defaults['backlog_days'];
 
 // *** URLs ***
 

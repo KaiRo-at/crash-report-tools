@@ -57,7 +57,7 @@ $flash_versions = array('17.0.0.169',
                         '18.0.0.174');
 
 // for how many days back to get the data
-$backlog_days = 7;
+$backlog_days = $global_defaults['backlog_days'];
 
 // how many top crashes to list
 $top_x = 100;

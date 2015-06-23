@@ -81,7 +81,7 @@ $reports = array(
 );
 
 // for how many days back to get the data
-$backlog_days = 7;
+$backlog_days = $global_defaults['backlog_days'];
 
 // how many top crashes to list
 $top_x = 100;

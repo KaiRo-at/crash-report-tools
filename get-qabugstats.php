@@ -46,7 +46,7 @@ if (count($force_dates)) {
 // *** data gathering variables ***
 
 // for how many days back to get the data
-$backlog_days = 2;
+$backlog_days = $global_defaults['bugstats_backlog_days'];
 
 // *** URLs ***
 
