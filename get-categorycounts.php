@@ -122,6 +122,8 @@ foreach ($reports as $catname=>$rep) {
     foreach ($rep['channels'] as $channel) {
       $fprodcatdata = $product.'-'.$channel.'-counts.json';
 
+      $unthrottle_factor = ($product == 'Firefox' && $channel == 'release') ? 10 : 1;
+
       $max_build_age = getMaxBuildAge($channel, true);
 
       if (file_exists($fprodcatdata)) {
@@ -170,10 +172,10 @@ foreach ($reports as $catname=>$rep) {
                   !is_array($prodcatdata[$anaday][$catname])) {
                 $prodcatdata[$anaday][$catname] = array();
               }
-              $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = intval($rep_row['cnt']);
+              $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = intval($rep_row['cnt']) * $unthrottle_factor;
             }
             else {
-              $prodcatdata[$anaday][$catname] = intval($rep_row['cnt']);
+              $prodcatdata[$anaday][$catname] = intval($rep_row['cnt']) * $unthrottle_factor;
             }
           }
         }
