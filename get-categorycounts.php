@@ -170,10 +170,10 @@ foreach ($reports as $catname=>$rep) {
                   !is_array($prodcatdata[$anaday][$catname])) {
                 $prodcatdata[$anaday][$catname] = array();
               }
-              $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = $rep_row['cnt'];
+              $prodcatdata[$anaday][$catname][strtolower($rep_row['process_type'])] = intval($rep_row['cnt']);
             }
             else {
-              $prodcatdata[$anaday][$catname] = $rep_row['cnt'];
+              $prodcatdata[$anaday][$catname] = intval($rep_row['cnt']);
             }
           }
         }
