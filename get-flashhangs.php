@@ -51,35 +51,7 @@ if (count($force_dates)) {
 //   product - product name
 //   version - empty is all versions
 
-$reports = array(array('product'=>'Firefox',
-                       'version'=>'4plus',
-                       'version_regex'=>'([4-9]|[0-9][0-9])\..*',
-                       'version_display'=>'4+',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'38.0',
-                       'version_regex'=>'38\.0.*',
-                       'version_display'=>'38',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'38.0.5',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'39.0',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'39.0a2',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'40.0a1',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'40.0a2',
-                      ),
-                 array('product'=>'Firefox',
-                       'version'=>'41.0a1',
-                      ),
-                );
+$reports = getReportDefinitions('flashhang');
 
 // for how many days back to get the data
 $backlog_days = $global_defaults['backlog_days'];
