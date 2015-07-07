@@ -267,7 +267,7 @@ function getReportDefinitions($type) {
           'version'=>'39',
           'version_regex'=>'39\..*',
           'fake_adu'=>false,
-          'mincount'=>40,
+          'mincount'=>60,
         ),
         array(
           'product'=>'Firefox',
@@ -326,7 +326,7 @@ function getReportDefinitions($type) {
           'version'=>'39',
           'version_regex'=>'39\..*',
           'fake_adu'=>false,
-          'mincount'=>10,
+          'mincount'=>50,
         ),
         array(
           'product'=>'FennecAndroid',
