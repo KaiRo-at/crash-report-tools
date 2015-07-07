@@ -108,7 +108,7 @@ else {
   $staticmetastore = array();
 }
 
-$products = array('Firefox', 'Core', 'Toolkit', 'Firefox for Android', 'Loop');
+$products = array('Firefox', 'Core', 'Toolkit', 'Firefox for Android', 'Hello (Loop)');
 // Products/components that Firefox QE cares about
 $productmap = array(
   'Firefox' => true,
@@ -120,7 +120,7 @@ $productmap = array(
   'Firefox for Android' => true,
   'Android Background Services' => true,
   'Firefox Health Report' => true,
-  'Loop' => array('Client', 'General'),
+  'Hello (Loop)' => array('Client', 'General'),
   'Mozilla Services' => true,
   'Snippets' => true,
   'Mozilla Localizations' => true,

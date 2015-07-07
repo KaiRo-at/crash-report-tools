@@ -267,14 +267,14 @@ function getReportDefinitions($type) {
           'version'=>'39',
           'version_regex'=>'39\..*',
           'fake_adu'=>false,
-          'mincount'=>60,
+          'mincount'=>70,
         ),
         array(
           'product'=>'Firefox',
           'version'=>'40',
           'version_regex'=>'40\..*',
           'fake_adu'=>false,
-          'mincount'=>10,
+          'mincount'=>20,
         ),
         array(
           'product'=>'Firefox',
