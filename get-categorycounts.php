@@ -83,6 +83,22 @@ $reports = array(
     'channels' => array('release', 'beta', 'aurora', 'nightly'),
     'products' => array('Firefox')
   ),
+  'address:pure' => array(
+    // The signature starts with a "pure" @0xFOOBAR address but not with a prepended "@0x0 |".
+    'filter' => "signatures.signature LIKE '@0x%' AND NOT signatures.signature LIKE '@0x0 |%'",
+    'include_signature_table' => true,
+    'process_split' => true,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox')
+  ),
+  'address:file' => array(
+    // The signature starts with a non-symbolized file@0xFOOBAR piece.
+    'filter' => "split_part(signatures.signature, ' | ', 1) LIKE '%_@0x%'",
+    'include_signature_table' => true,
+    'process_split' => true,
+    'channels' => array('release', 'beta', 'aurora', 'nightly'),
+    'products' => array('Firefox')
+  ),
 );
 
 // for how many days back to get the data
