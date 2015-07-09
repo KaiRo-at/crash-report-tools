@@ -92,8 +92,8 @@ $reports = array(
     'products' => array('Firefox')
   ),
   'address:file' => array(
-    // The signature starts with a non-symbolized file@0xFOOBAR piece.
-    'filter' => "split_part(signatures.signature, ' | ', 1) LIKE '%_@0x%'",
+    // The signature starts with a non-symbolized file@0xFOOBAR piece (potentially after a @0x0 frame).
+    'filter' => "split_part(regexp_replace(signatures.signature, '^@0x0 \| ', ''), ' | ', 1) LIKE '%_@0x%'",
     'include_signature_table' => true,
     'process_split' => true,
     'channels' => array('release', 'beta', 'aurora', 'nightly'),
