@@ -219,17 +219,10 @@ function getReportDefinitions($type) {
       return array(
         array(
           'product'=>'Firefox',
-          'version'=>'31',
-          'version_regex'=>'31\..*', // keep around for ESR
-          'fake_adu'=>false,
-          'mincount'=>40,
-        ),
-        array(
-          'product'=>'Firefox',
           'version'=>'38',
           'version_regex'=>'38\..*', // keep around for ESR
           'fake_adu'=>false,
-          'mincount'=>50,
+          'mincount'=>40,
         ),
         array(
           'product'=>'Firefox',
