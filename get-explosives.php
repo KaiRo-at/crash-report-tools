@@ -64,7 +64,7 @@ $url_nullsiglink = 'https://crash-stats.mozilla.com/report/list?missing_sig=EMPT
 $url_buglinkbase = 'https://bugzilla.mozilla.org/show_bug.cgi?id=';
 
 // File storing the DB access data - including password!
-$fdbsecret = '/home/rkaiser/.socorro-prod-dbsecret.json';
+$fdbsecret = '/home/centos/.socorro-prod-dbsecret.json';
 
 // *** code start ***
 

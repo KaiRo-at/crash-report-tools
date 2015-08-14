@@ -46,7 +46,7 @@ $backlog_days = $global_defaults['backlog_days'];
 // *** URLs ***
 
 // File storing the DB access data - including password!
-$fdbsecret = '/home/rkaiser/.socorro-prod-dbsecret.json';
+$fdbsecret = '/home/centos/.socorro-prod-dbsecret.json';
 
 // *** code start ***
 

@@ -37,7 +37,7 @@ $backlog_days = $global_defaults['backlog_days'];
 // *** URLs ***
 
 // File storing the DB access data - including password!
-$fdbsecret = '/home/rkaiser/.socorro-prod-dbsecret.json';
+$fdbsecret = '/home/centos/.socorro-prod-dbsecret.json';
 
 $url_siglinkbase = 'https://crash-stats.mozilla.com/report/list?signature=';
 $url_nullsiglink = 'https://crash-stats.mozilla.com/report/list?missing_sig=EMPTY_STRING';
