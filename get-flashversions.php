@@ -53,8 +53,8 @@ if (count($force_dates)) {
 
 $flash_versions = array('18.0.0.209',
                         '18.0.0.232',
-                        '19.0.0.133',
-                        '19.0.0.142');
+                        '19.0.0.142',
+                        '19.0.0.157');
 
 // for how many days back to get the data
 $backlog_days = $global_defaults['backlog_days'];
