@@ -285,13 +285,6 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'FennecAndroid',
-          'version'=>'39',
-          'version_regex'=>'39\..*',
-          'fake_adu'=>false,
-          'mincount'=>50,
-        ),
-        array(
-          'product'=>'FennecAndroid',
           'version'=>'40',
           'version_regex'=>'40\..*',
           'fake_adu'=>false,
