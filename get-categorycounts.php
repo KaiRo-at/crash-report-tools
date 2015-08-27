@@ -197,7 +197,7 @@ foreach ($reports as $catname=>$rep) {
         }
       }
 
-      ksort($fprodcatdata); // sort by date (key), ascending
+      ksort($prodcatdata); // sort by date (key), ascending
       file_put_contents($fprodcatdata, json_encode($prodcatdata));
       print("\n");
     }
