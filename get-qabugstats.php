@@ -201,6 +201,12 @@ $iterations =
                           'end' => '2015-09-08'),
           '43.3' => array('start' => '2015-09-08',
                           'end' => '2015-09-22'),
+          '44.1' => array('start' => '2015-09-22',
+                          'end' => '2015-10-06'),
+          '44.2' => array('start' => '2015-10-06',
+                          'end' => '2015-10-20'),
+          '44.3' => array('start' => '2015-10-20',
+                          'end' => '2015-11-03'),
     );
 $iterqueries = array('total', 'verifiable', 'verifydone',
                      'verifyneeded', 'contactneeded', 'verifytriage');
@@ -282,6 +288,11 @@ $trains =
                         'beta'    => '2015-11-02',
                         'release' => '2015-12-15',
                         'end'     => '2016-01-26'),
+          '44' => array('start'   => '2015-09-21',
+                        'aurora'  => '2015-11-02',
+                        'beta'    => '2015-12-14',
+                        'release' => '2016-01-26',
+                        'end'     => '2016-03-08'),
     );
 $trainqueries = array('notverifymarked', 'verifydone', 'verifyneeded', 'verifytriage');
 
