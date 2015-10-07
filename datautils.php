@@ -175,13 +175,6 @@ function getReportDefinitions($type) {
         array(
           'product'=>'Firefox',
           'channel'=>'release',
-          'version'=>'40.0',
-          'version_regex'=>'40\.0.*',
-          'version_display'=>'40',
-        ),
-        array(
-          'product'=>'Firefox',
-          'channel'=>'release',
           'version'=>'41.0',
           'version_regex'=>'41\.0.*',
           'version_display'=>'41',
@@ -233,10 +226,17 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
+          'version'=>'40',
+          'version_regex'=>'40\..*',
+          'fake_adu'=>false,
+          'mincount'=>50,
+        ),
+        array(
+          'product'=>'Firefox',
           'version'=>'41',
           'version_regex'=>'41\..*',
           'fake_adu'=>false,
-          'mincount'=>40,
+          'mincount'=>90,
         ),
         array(
           'product'=>'Firefox',
