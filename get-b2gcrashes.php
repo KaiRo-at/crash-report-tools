@@ -330,6 +330,7 @@ for ($daysback = $backlog_days + 1; $daysback > 0; $daysback--) {
           .'.device.geeksphone_gp_peak,'."\n"
           .'.device.geeksphone_gp_keon,'."\n"
           .'.device.geeksphone_gp_twist,'."\n"
+          .'.device.sony_xperia_z3_compact_b2g,'."\n"
           .'.device.t2m_flame,'."\n"
           .'.device.unknown_b2g_on_flatfish,'."\n"
           .'.device.unknown_flame {'."\n"
