@@ -58,7 +58,8 @@ $flash_versions = array('19.0.0.245',
                         '20.0.0.235',
                         '20.0.0.238',
                         '20.0.0.248',
-                        '20.0.0.255');
+                        '20.0.0.255',
+                        '20.0.0.267');
 
 // for how many days back to get the data
 $backlog_days = $global_defaults['backlog_days'];
