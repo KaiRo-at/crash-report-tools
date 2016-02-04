@@ -320,12 +320,12 @@ $trains =
                         'aurora'  => '2016-01-25',
                         'beta'    => '2016-03-07',
                         'release' => '2016-04-19',
-                        'end'     => '2016-05-31'),
+                        'end'     => '2016-06-07'),
           '47' => array('start'   => '2016-01-25',
                         'aurora'  => '2016-03-07',
                         'beta'    => '2016-04-18',
-                        'release' => '2016-05-31',
-                        'end'     => '2016-07-12'),
+                        'release' => '2016-06-07',
+                        'end'     => '2016-08-02'),
     );
 $trainqueries = array('notverifymarked', 'verifydone', 'verifyneeded', 'verifytriage');
 
