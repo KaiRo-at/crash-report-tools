@@ -61,6 +61,8 @@ $backlog_days = $global_defaults['backlog_days'];
 // File storing the DB access data - including password!
 $fdbsecret = '/home/centos/.socorro-prod-dbsecret.json';
 
+$url_verlinkbase = 'https://crash-stats.mozilla.com/search/?product=Firefox&process_type=plugin&plugin_name=Shockwave+Flash&plugin_version=';
+
 // *** code start ***
 
 // get current day
@@ -318,8 +320,10 @@ foreach ($reports as $rep) {
                           $cnum / $fd['total_flash']['crash']:0;
 
             $tr = $table->appendChild($doc->createElement('tr'));
-            $td = $tr->appendChild($doc->createElement('td', $fver));
+            $td = $tr->appendChild($doc->createElement('td'));
             if ($fvertype == 'full') {
+              $link = $td->appendChild($doc->createElement('a', $fver));
+              $link->setAttribute('href', $url_verlinkbase.$fver);
               if (preg_match('/^(\d+\.\d+)/', $fver, $fvregs)) {
                 $fvshort = $fvregs[1];
               }
@@ -329,6 +333,9 @@ foreach ($reports as $rep) {
               if ($fd['latest'][$fvshort] == $fver) {
                 $td->setAttribute('class', 'latestver');
               }
+            }
+            else {
+              $td->appendChild($doc->createTextNode($fver));
             }
 
             $td = $tr->appendChild($doc->createElement('td',
