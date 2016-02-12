@@ -19,6 +19,8 @@ cd `dirname $_`
 ./get-socorrobugsweekly.php
 ./get-crashbugsweekly.php
 ./get-qabugstats.php
+python ../magdalena/get-dailydata.py
+python ../magdalena/get-bytypedata.py $@
 
 # indicate the latest processed date
 date -d "yesterday" +"%F" > ../latestdate.txt
