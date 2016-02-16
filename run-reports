@@ -8,11 +8,11 @@ cd `dirname $_`
 ./get-buildcrashes.php
 ./get-explosives.php
 ./get-flashhangs.php $@
-./get-flashversions.php $@
+#./get-flashversions.php $@
 #./get-components.php
-./get-startupcrashes.php
+#./get-startupcrashes.php
 #./get-devicecrashes.php
-./get-topcrashes.php
+#./get-topcrashes.php
 ./get-b2gcrashes.php
 ./get-socorrodata.php
 ./get-categorycounts.php $@
