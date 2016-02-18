@@ -56,7 +56,7 @@ $reports = array(
     'products' => array('Firefox', 'FennecAndroid')
   ),
   'oom' => array(
-    'filter' => "signatures.signature LIKE 'OOM |%'",
+    'filter' => "(signatures.signature LIKE 'OOM |%' OR signatures.signature='js::AutoEnterOOMUnsafeRegion::crash')",
     'include_signature_table' => true,
     'process_split' => true,
     'channels' => array('release', 'beta', 'aurora', 'nightly'),
