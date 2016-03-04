@@ -322,8 +322,10 @@ foreach ($reports as $rep) {
             $tr = $table->appendChild($doc->createElement('tr'));
             $td = $tr->appendChild($doc->createElement('td'));
             if ($fvertype == 'full') {
+              $dateparams = '&date=>%3D'.$anaday.'&date=<';
+              $dateparams .= date('Y-m-d', strtotime($anaday.' +1 day'));
               $link = $td->appendChild($doc->createElement('a', $fver));
-              $link->setAttribute('href', $url_verlinkbase.$fver);
+              $link->setAttribute('href', $url_verlinkbase.$fver.$dateparams);
               if (preg_match('/^(\d+\.\d+)/', $fver, $fvregs)) {
                 $fvshort = $fvregs[1];
               }
