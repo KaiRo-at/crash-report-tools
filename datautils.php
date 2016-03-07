@@ -250,13 +250,6 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
-          'version'=>'43',
-          'version_regex'=>'43\..*',
-          'fake_adu'=>false,
-          'mincount'=>100,
-        ),
-        array(
-          'product'=>'Firefox',
           'version'=>'44',
           'version_regex'=>'44\..*',
           'fake_adu'=>false,
