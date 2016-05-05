@@ -174,15 +174,22 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
-          'channel'=>'release',
+          'channel'=>'esr',
           'version'=>'45.0',
           'version_regex'=>'45\.0.*',
-          'version_display'=>'45',
+          'version_display'=>'45 ESR',
+        ),
+        array(
+          'product'=>'Firefox',
+          'channel'=>'release',
+          'version'=>'46.0',
+          'version_regex'=>'46\.0.*',
+          'version_display'=>'46',
         ),
         array(
           'product'=>'Firefox',
           'channel'=>'beta',
-          'version'=>'46.0',
+          'version'=>'47.0',
         ),
         array(
           'product'=>'Firefox',
@@ -195,14 +202,14 @@ function getReportDefinitions($type) {
         array(
           'product'=>'FennecAndroid',
           'channel'=>'release',
-          'version'=>'45.0',
-          'version_regex'=>'45\.0.*',
-          'version_display'=>'45',
+          'version'=>'46.0',
+          'version_regex'=>'46\.0.*',
+          'version_display'=>'46',
         ),
         array(
           'product'=>'FennecAndroid',
           'channel'=>'beta',
-          'version'=>'46.0',
+          'version'=>'47.0',
         ),
         array(
           'product'=>'FennecAndroid',
@@ -227,7 +234,7 @@ function getReportDefinitions($type) {
         array(
           'product'=>'Firefox',
           'version'=>'45',
-          'version_regex'=>'45\..*',
+          'version_regex'=>'45\..*', // keep around for ESR
           'fake_adu'=>false,
           'mincount'=>100,
         ),
@@ -236,19 +243,26 @@ function getReportDefinitions($type) {
           'version'=>'46',
           'version_regex'=>'46\..*',
           'fake_adu'=>false,
-          'mincount'=>30,
+          'mincount'=>50,
         ),
         array(
           'product'=>'Firefox',
           'version'=>'47',
           'version_regex'=>'47\..*',
           'fake_adu'=>false,
-          'mincount'=>10,
+          'mincount'=>30,
         ),
         array(
           'product'=>'Firefox',
           'version'=>'48',
           'version_regex'=>'48\..*',
+          'fake_adu'=>false,
+          'mincount'=>10,
+        ),
+        array(
+          'product'=>'Firefox',
+          'version'=>'49',
+          'version_regex'=>'49\..*',
           'fake_adu'=>false,
           'mincount'=>10,
         ),
@@ -278,15 +292,15 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'FennecAndroid',
-          'version'=>'45',
-          'version_regex'=>'45\..*',
+          'version'=>'46',
+          'version_regex'=>'46\..*',
           'fake_adu'=>false,
           'mincount'=>80,
         ),
         array(
           'product'=>'FennecAndroid',
-          'version'=>'46',
-          'version_regex'=>'46\..*',
+          'version'=>'47',
+          'version_regex'=>'47\..*',
           'fake_adu'=>false,
           'mincount'=>10,
         ),
@@ -325,21 +339,21 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
-          'version'=>'45.0',
+          'version'=>'46.0',
           'version_regex'=>'45\.0.*',
           'version_display'=>'45',
         ),
         array(
           'product'=>'Firefox',
-          'version'=>'46.0',
+          'version'=>'47.0',
         ),
         array(
           'product'=>'Firefox',
-          'version'=>'47.0a2',
+          'version'=>'48.0a2',
         ),
         array(
           'product'=>'Firefox',
-          'version'=>'48.0a1',
+          'version'=>'49.0a1',
         ),
       );
     case 'startup':
@@ -353,15 +367,22 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
-          'channel'=>'release',
+          'channel'=>'esr',
           'version'=>'45.0',
           'version_regex'=>'45\.0.*',
-          'version_display'=>'45',
+          'version_display'=>'45 ESR',
+        ),
+        array(
+          'product'=>'Firefox',
+          'channel'=>'release',
+          'version'=>'46.0',
+          'version_regex'=>'46\.0.*',
+          'version_display'=>'46',
         ),
         array(
           'product'=>'Firefox',
           'channel'=>'beta',
-          'version'=>'46.0',
+          'version'=>'47.0',
         ),
         array(
           'product'=>'Firefox',
@@ -374,14 +395,14 @@ function getReportDefinitions($type) {
         array(
           'product'=>'FennecAndroid',
           'channel'=>'release',
-          'version'=>'45.0',
-          'version_regex'=>'45\.0.*',
-          'version_display'=>'45',
+          'version'=>'46.0',
+          'version_regex'=>'46\.0.*',
+          'version_display'=>'46',
         ),
         array(
           'product'=>'FennecAndroid',
           'channel'=>'beta',
-          'version'=>'46.0',
+          'version'=>'47.0',
         ),
         array(
           'product'=>'FennecAndroid',
