@@ -21,6 +21,7 @@ cd `dirname $_`
 ./get-qabugstats.php
 python ../magdalena/get-dailydata.py
 python ../magdalena/get-bytypedata.py $@
+python ../magdalena/get-categorydata.py $@
 
 # indicate the latest processed date
 date -d "yesterday" +"%F" > ../latestdate.txt
