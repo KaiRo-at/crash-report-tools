@@ -1,27 +1,61 @@
 #!/bin/sh
 
-# Invoke all scripts that build reports.
+## Invoke all scripts that build reports.
+## https://crash-analysis.mozilla.com/rkaiser/0000.overview.html always lists the latest of those reports
 
-# Switch to the directory this script is placed in.
+## Switch to the directory this script is placed in.
 cd `dirname $_`
 
+## List crashes, ADI, and crash rates for every single build of the active versions.
 ./get-buildcrashes.php
+
+## Build explosiveness reports
 ./get-explosives.php
+
+## Compare the amount of Flash hangs and crashes by Flash version to detect anomalies (and see which Flash versions are active in crashes)
 ./get-flashhangs.php $@
+
+## Top crashes for specific Flash versions, can now be done via Super Search
 #./get-flashversions.php $@
+
+## Top crashes by components, has some interesting heuristics but never was really looked at by the teams
 #./get-components.php
+
+## Top startup crashes, can now be done via Super Search
 #./get-startupcrashes.php
+
+## Top crashes by device and devices by topcrasher, can now be done via Super Search and Signature Summaries
 #./get-devicecrashes.php
+
+## Various Top crash lists, e.g. for new OS versions, can now be done via Super Search
 #./get-topcrashes.php
+
+## Crashes by B2G OS version, annotating devices
 ./get-b2gcrashes.php
+
+## Fetch "daily and "by type" data from Socorro for long-term graphs (backup for data now collected via python and API)
 ./get-socorrodata.php
+
+## Fetch category counts for long-term graphs (backup for data now collected via python and API)
 ./get-categorycounts.php $@
+
+## Get weekly stats of new/triaged/fixed Socorro bugs
 ./get-socorrobugsweekly.php
+
+## Get weekly stats of new/triaged/fixed crash bugs
 ./get-crashbugsweekly.php
+
+## Get bug stats for QA team (obsolete)
 ./get-qabugstats.php
+
+## Fetch daily data per Firefox version data via Socorro API
 python ../magdalena/get-dailydata.py
+
+## Fetch "by type" long-term graph data via Socorro API
 python ../magdalena/get-bytypedata.py $@
+
+## Fetch "category" long-term graph data via Socorro API
 python ../magdalena/get-categorydata.py $@
 
-# indicate the latest processed date
+## indicate the latest processed date (used by dashboard and overview)
 date -d "yesterday" +"%F" > ../latestdate.txt
