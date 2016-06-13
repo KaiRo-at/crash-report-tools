@@ -268,6 +268,13 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
+          'version'=>'50',
+          'version_regex'=>'50\..*',
+          'fake_adu'=>false,
+          'mincount'=>10,
+        ),
+        array(
+          'product'=>'Firefox',
           'channel'=>'release',
           'fake_adu'=>false,
           'mincount'=>150,
@@ -301,6 +308,13 @@ function getReportDefinitions($type) {
           'product'=>'FennecAndroid',
           'version'=>'47',
           'version_regex'=>'47\..*',
+          'fake_adu'=>false,
+          'mincount'=>10,
+        ),
+        array(
+          'product'=>'FennecAndroid',
+          'version'=>'48',
+          'version_regex'=>'48\..*',
           'fake_adu'=>false,
           'mincount'=>10,
         ),
