@@ -226,13 +226,6 @@ function getReportDefinitions($type) {
       return array(
         array(
           'product'=>'Firefox',
-          'version'=>'38',
-          'version_regex'=>'38\..*', // keep around for ESR
-          'fake_adu'=>false,
-          'mincount'=>40,
-        ),
-        array(
-          'product'=>'Firefox',
           'version'=>'45',
           'version_regex'=>'45\..*', // keep around for ESR
           'fake_adu'=>false,
@@ -240,24 +233,17 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'Firefox',
-          'version'=>'46',
-          'version_regex'=>'46\..*',
-          'fake_adu'=>false,
-          'mincount'=>50,
-        ),
-        array(
-          'product'=>'Firefox',
           'version'=>'47',
           'version_regex'=>'47\..*',
           'fake_adu'=>false,
-          'mincount'=>30,
+          'mincount'=>50,
         ),
         array(
           'product'=>'Firefox',
           'version'=>'48',
           'version_regex'=>'48\..*',
           'fake_adu'=>false,
-          'mincount'=>10,
+          'mincount'=>30,
         ),
         array(
           'product'=>'Firefox',
@@ -270,6 +256,13 @@ function getReportDefinitions($type) {
           'product'=>'Firefox',
           'version'=>'50',
           'version_regex'=>'50\..*',
+          'fake_adu'=>false,
+          'mincount'=>10,
+        ),
+        array(
+          'product'=>'Firefox',
+          'version'=>'51',
+          'version_regex'=>'51\..*',
           'fake_adu'=>false,
           'mincount'=>10,
         ),
@@ -299,22 +292,22 @@ function getReportDefinitions($type) {
         ),
         array(
           'product'=>'FennecAndroid',
-          'version'=>'46',
-          'version_regex'=>'46\..*',
+          'version'=>'47',
+          'version_regex'=>'47\..*',
           'fake_adu'=>false,
           'mincount'=>80,
         ),
         array(
           'product'=>'FennecAndroid',
-          'version'=>'47',
-          'version_regex'=>'47\..*',
+          'version'=>'48',
+          'version_regex'=>'48\..*',
           'fake_adu'=>false,
           'mincount'=>10,
         ),
         array(
           'product'=>'FennecAndroid',
-          'version'=>'48',
-          'version_regex'=>'48\..*',
+          'version'=>'49',
+          'version_regex'=>'49\..*',
           'fake_adu'=>false,
           'mincount'=>10,
         ),
